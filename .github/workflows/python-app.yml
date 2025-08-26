@@ -59,7 +59,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install uv
-          uv pip install -e .[infra] --system
+          uv pip install -e .[dev] --system
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
