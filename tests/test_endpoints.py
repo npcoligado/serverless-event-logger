@@ -14,7 +14,7 @@ client = TestClient(app)
 class TestEndpoints(TestCase):
     def setUp(self):
         os.environ["EVENTS_TABLE"] = "EventsTable"
-        os.environ["AWS_REGION"] = "ap-southeast-2"
+        os.environ["AWS_DEFAULT_REGION"] = "ap-southeast-2"
 
         Event.create_table()
 
