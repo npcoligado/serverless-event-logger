@@ -42,6 +42,10 @@ jobs:
     permissions:
       id-token: write
       contents: read
+    env:
+      PROJECT: sls-event-logger
+      STAGE: dev
+      AWS_DEFAULT_REGION: ap-southeast-2
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -68,4 +72,5 @@ jobs:
 
       - name: Deploy to AWS
         run: |
+          cd infrastructure
           cdk deploy --all --require-approval never
