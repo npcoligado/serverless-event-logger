@@ -15,6 +15,10 @@ dev = [
     "ruff>=0.12.10",
     "uvicorn>=0.35.0",
 ]
+infra = [
+    "aws-cdk-lib>=2.212.0",
+    "constructs>=10.4.2",
+]
 
 [tool.pytest.ini_options]
 pythonpath = ["."]
