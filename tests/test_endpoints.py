@@ -41,3 +41,7 @@ class TestEndpoints(TestCase):
 
         self.assertEqual(422, response.status_code)
         self.assertIn("id", response_body["detail"][0]["loc"])
+
+    def test_get_event_success(self): ...
+
+    def test_get_event_not_found(self): ...

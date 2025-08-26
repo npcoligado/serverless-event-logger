@@ -30,11 +30,37 @@ app.add_middleware(
         },
     },
 )
-async def create_event(event_request: EventRequest):
+async def create_event(event_request: EventRequest) -> EventResponse:
+    """
+    Create a new event.
+
+    Parameters:
+        - event_request: The event request data.
+
+    Returns:
+        The created event.
+    """
     print(f"Received request: {event_request}")
     created_event = EventService.create(event_request.model_dump())
 
     return created_event
+
+
+@app.get("/events/{id}", response_model=EventResponse)
+async def get_event(id: str) -> EventResponse:
+    """
+    Get an event by its ID.
+
+    Parameters:
+        - id: The ID of the event.
+
+    Returns:
+        The event with the specified ID.
+    """
+    print(f"Retrieving details for event ID: {id}")
+    event = EventService.get(id)
+
+    return event
 
 
 handler = Mangum(app)

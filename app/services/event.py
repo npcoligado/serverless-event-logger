@@ -6,3 +6,7 @@ def create(event_dict: dict) -> Event:
     event.save()
 
     return event
+
+
+def get(event_id: str) -> Event:
+    return Event.get(event_id)
