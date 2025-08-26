@@ -1,0 +1,17 @@
+[project]
+name = "serverless-event-logger"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = [
+    "dyntastic>=0.18.0",
+    "fastapi[standard]>=0.116.1",
+    "mangum>=0.19.0",
+]
+
+[dependency-groups]
+dev = [
+    "moto>=5.1.11",
+    "pytest>=8.4.1",
+    "ruff>=0.12.10",
+    "uvicorn>=0.35.0",
+]
