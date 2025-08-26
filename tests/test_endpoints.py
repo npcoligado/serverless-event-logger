@@ -14,6 +14,7 @@ client = TestClient(app)
 class TestEndpoints(TestCase):
     def setUp(self):
         os.environ["EVENTS_TABLE"] = "EventsTable"
+        os.environ["AWS_REGION"] = "ap-southeast-2"
 
         Event.create_table()
 
@@ -42,6 +43,20 @@ class TestEndpoints(TestCase):
         self.assertEqual(422, response.status_code)
         self.assertIn("id", response_body["detail"][0]["loc"])
 
-    def test_get_event_success(self): ...
+    def test_get_event_success(self):
+        valid_event_request = {
+            "id": "456",
+            "type": "test",
+            "payload": {"key": "value"},
+        }
+        client.post("/events", json=valid_event_request)
 
-    def test_get_event_not_found(self): ...
+        response = client.get("/events/456")
+
+        self.assertEqual(200, response.status_code)
+        self.assertEqual("456", response.json()["id"])
+
+    def test_get_event_not_found(self):
+        response = client.get("/events/789")
+
+        self.assertEqual(404, response.status_code)

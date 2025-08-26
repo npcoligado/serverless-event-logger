@@ -1,5 +1,6 @@
 from fastapi import FastAPI, status
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from mangum import Mangum
 
 import app.services.event as EventService
@@ -59,6 +60,12 @@ async def get_event(id: str) -> EventResponse:
     """
     print(f"Retrieving details for event ID: {id}")
     event = EventService.get(id)
+
+    if event is None:
+        return JSONResponse(
+            status_code=status.HTTP_404_NOT_FOUND,
+            content={"message": "Event not found"},
+        )
 
     return event
 

@@ -1,3 +1,5 @@
+from dyntastic import DoesNotExist
+
 from app.models.event import Event
 
 
@@ -9,4 +11,7 @@ def create(event_dict: dict) -> Event:
 
 
 def get(event_id: str) -> Event:
-    return Event.get(event_id)
+    try:
+        return Event.get(event_id)
+    except DoesNotExist:
+        return None
