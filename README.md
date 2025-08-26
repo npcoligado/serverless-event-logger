@@ -14,3 +14,12 @@
 [ ] Add deployment step in pipeline <br>
 [ ] Perform integration testing (via Thunder Client extension in VS Code) <br>
 [ ] Update readme
+
+
+## Setting up local virtual environment
+1. Install Python 3.13. Option to manage Python versions using `pyenv`.
+2. Install `uv` via `pip install uv` if not yet done.
+3. Create virtual environment: `uv venv .venv`.
+4. Activate venv: `.venv\Scripts\activate`.
+5. Install dependencies: `uv sync`.
+6. To add dependencies, execute `uv add <package_name>`. If dependency is optional, add `--group dev`.
