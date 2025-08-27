@@ -2,7 +2,7 @@ import os
 
 from aws_cdk import App, Tags
 
-from infrastructure.stacks.service import ServiceStack
+from stacks.service import ServiceStack
 from stacks.database import DatabaseStack
 
 
