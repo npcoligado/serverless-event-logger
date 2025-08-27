@@ -101,6 +101,7 @@ If I had more time, I would have done the following:
 - Setting env vars in a different way, instead of hardcoding in the pipeline template (e.g., create a shell script that will set the correct env vars depending on the branch)
 - Setting up tox to run linter, formatter, and tests using a single command `tox`
 - Setting up a local DynamoDB (via Docker) to allow full local development
+- Use another branch for `dev`. Treat `main` as production branch, so only stable code should be pushed. Debugging should be done in `dev` or feature branches.
 
 ### Issues encountered
 Most of the difficulties I encountered are related to the pipeline.
